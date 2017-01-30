@@ -11,10 +11,13 @@
       let vm = this;
 
       vm.$onInit = () => {
+        
+      };
+
+      vm.getAll = () => {
         $http.get('/classifieds')
         .then((response) => {
-          vm.data = response.data;
-          console.log(vm.data);
+          vm.listings = response.data;
         });
       };
 

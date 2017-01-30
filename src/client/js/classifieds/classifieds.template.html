@@ -1,1 +1,24 @@
-<h1>Hello from listings component!</h1>
+<h2>Hello from listings component!</h2>
+<table>
+  <thead>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Item Image</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="listing in $ctrl.listings">
+      <td> {{ listing.id }}</td>
+      <td> {{ listing.title }}</td>
+      <td> {{ listing.description }} </td>
+      <td> {{ listing.price }} </td>
+      <td> {{ listing.item_image }} </td>
+    </tr>
+  </tbody>
+</table>
+
+<form ng-submit="$ctrl.getAll()">
+
+  <button type="submit" name="button">Get All Classifieds</button>
+</form>
