@@ -6,10 +6,10 @@ module.exports = {
     client: 'pg',
     connection: 'postgres://localhost/classifieds',
     migrations : {
-      directory: __dirname + '/db/migrations'
+      directory: __dirname + '/src/server/db/migrations'
     },
     seeds: {
-      directory: __dirname + '/db/seeds/development'
+      directory: __dirname + '/src/server/db/seeds/development'
     }
   },
 
@@ -17,21 +17,21 @@ module.exports = {
     client: 'pg',
     connection: 'postgres://localhost/classifieds_test',
     migrations : {
-      directory: __dirname + '/db/migrations'
+      directory: __dirname + '/src/server/db/migrations'
     },
     seeds: {
-      directory: __dirname + '/db/seeds/test'
+      directory: __dirname + '/src/server/db/seeds/test'
     }
    },
-   
+
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     migrations : {
-      directory: __dirname + '/db/migrations'
+      directory: __dirname + '/src/server/db/migrations'
     },
     seeds: {
-      directory: __dirname + '/db/seeds/production'
+      directory: __dirname + '/src/server/db/seeds/production'
     }
    },
 
