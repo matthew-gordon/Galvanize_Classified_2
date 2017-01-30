@@ -15,10 +15,7 @@
         .then((response) => {
           vm.data = response.data;
           console.log(vm.data);
-        })
-        .catch((error) => {
-          next(error);
-        })
+        });
       };
 
     }
