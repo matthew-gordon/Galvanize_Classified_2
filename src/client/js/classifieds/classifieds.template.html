@@ -14,11 +14,18 @@
       <td> {{ listing.description }} </td>
       <td> {{ listing.price }} </td>
       <td> {{ listing.item_image }} </td>
+      <td><a href="#" ng-click="$ctrl.formToggle(listing)">edit</a> <a ng-click="$ctrl.deleteListing(listing.id)" href="#">delete</a></td>
     </tr>
   </tbody>
 </table>
+<br>
 
-<form ng-submit="$ctrl.getAll()">
+<button ng-click="$ctrl.getAll()" type="submit" name="button">Get All Classifieds</button><br><br>
 
-  <button type="submit" name="button">Get All Classifieds</button>
+<form name="$ctrl.editForm" ng-if="$ctrl.showForm" ng-submit="$ctrl.editListing($ctrl.listing)">
+  <input ng-model="$ctrl.listing.title" type="text" name="title" placeholder="Title"><br><br>
+  <textarea ng-model="$ctrl.listing.description" name="description" placeholder="Description"></textarea><br><br>
+  <input ng-model="$ctrl.listing.price" type="number" name="price" placeholder="Price"><br><br>
+  <input ng-model="$ctrl.listing.item_image" type="text" name="itemImage" placeholder="Image URL"><br>
+  <button type="submit" name="button">Submit</button>
 </form>
