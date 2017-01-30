@@ -1,11 +1,15 @@
 <h2>Hello from listings component!</h2>
-<input ng-model="searchText "type="text" name="filter" value="Filter">
-<select>
-  <option value="">placeholder</option>
-  <option value="">placeholder</option>
-  <option value="">placeholder</option>
-  <option value="">placeholder</option>
+Filter:<br>
+<input ng-model="searchText" type="text" name="filter"><br>
+Sort by {{ sortByValue }}<br>
+
+<select ng-model="$ctrl.sortByValue">
+  <option value="title">title</option>
+  <option value="price">price</option>
 </select>
+
+{{ $ctrl.sortByValue}}
+
 <table>
   <thead>
     <th>Id</th>
@@ -15,7 +19,7 @@
     <th>Item Image</th>
   </thead>
   <tbody>
-    <tr ng-repeat="listing in $ctrl.listings | orderBy: 'id' | filter:searchText">
+    <tr ng-repeat="listing in $ctrl.listings | orderBy:$ctrl.sortByValue | filter:searchText">
       <td> {{ listing.id }}</td>
       <td> {{ listing.title }}</td>
       <td> {{ listing.description }} </td>
