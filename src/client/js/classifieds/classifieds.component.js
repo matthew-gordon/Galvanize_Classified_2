@@ -45,8 +45,20 @@
       };
 
       vm.deleteListing = (listingID) => {
-        console.log(listingID);
-        console.log('Delete clicked!');
+        $http.delete(`classifieds/${listingID}`)
+        .then((res, err) => {
+          if (err) {
+            console.error(err);
+          }
+          
+          $http.get('/classifieds')
+          .then((res, err) => {
+            if (err) {
+              console.error(err);
+            }
+            vm.listings = res.data;
+          });
+        });
       };
 
     }
