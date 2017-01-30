@@ -6,6 +6,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const messages = require('./src/server/routes/classifieds');
 
+app.use('/', express.static(path.join(__dirname + '/node_modules/')));
+
 app.use('/', express.static(path.join(__dirname + '/src/client')));
 
 app.use(bodyParser.json());
