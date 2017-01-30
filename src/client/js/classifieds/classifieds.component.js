@@ -11,13 +11,17 @@
       let vm = this;
 
       vm.$onInit = () => {
-        vm.showForm = false;
+        vm.showEditForm = false;
+        vm.showCreateForm = false;
       };
 
-      vm.formToggle = (listing) => {
-        vm.showForm = !vm.showForm;
+      vm.createFormToggle = () => {
+        vm.showCreateForm = !vm.showCreateForm;
+      };
+
+      vm.editFormToggle = (listing) => {
+        vm.showEditForm = !vm.showEditForm;
         vm.listing = listing;
-        console.log(listing);
       };
 
       vm.getAll = () => {
@@ -30,17 +34,35 @@
         });
       };
 
+      vm.add = (listing) => {
+        $http.post('/classifieds', listing)
+        .then((res, err) => {
+          if (err) {
+            console.error(err);
+          }
+          vm.createForm.$setPristine();
+          vm.createForm.$setUntouched();
+          delete vm.listing;
+          $http.get('/classifieds')
+          .then((res, err) => {
+            if (err) {
+              console.error(err);
+            }
+          vm.listings = res.data;
+          });
+        });
+      };
+
       vm.editListing = (listing) => {
         $http.patch(`/classifieds/${listing.id}`, listing)
         .then((res, err) => {
           if (err) {
             console.error(err);
           }
-          console.log(res);
           vm.editForm.$setPristine();
           vm.editForm.$setUntouched();
           delete vm.listing;
-          vm.formToggle();
+          vm.editFormToggle();
         });
       };
 
@@ -50,7 +72,7 @@
           if (err) {
             console.error(err);
           }
-          
+
           $http.get('/classifieds')
           .then((res, err) => {
             if (err) {

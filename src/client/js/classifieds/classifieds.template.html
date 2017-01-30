@@ -8,21 +8,30 @@
     <th>Item Image</th>
   </thead>
   <tbody>
-    <tr ng-repeat="listing in $ctrl.listings">
+    <tr ng-repeat="listing in $ctrl.listings | orderBy: 'id'">
       <td> {{ listing.id }}</td>
       <td> {{ listing.title }}</td>
       <td> {{ listing.description }} </td>
       <td> {{ listing.price }} </td>
       <td> {{ listing.item_image }} </td>
-      <td><a href="#" ng-click="$ctrl.formToggle(listing)">edit</a> <a ng-click="$ctrl.deleteListing(listing.id)" href="#">delete</a></td>
+      <td><a href="#" ng-click="$ctrl.editFormToggle(listing)">edit</a> <a ng-click="$ctrl.deleteListing(listing.id)" href="#">delete</a></td>
     </tr>
   </tbody>
 </table>
 <br>
 
+<button type="submit" name="button" ng-click="$ctrl.createFormToggle()">Post New Classified</button>
 <button ng-click="$ctrl.getAll()" type="submit" name="button">Get All Classifieds</button><br><br>
 
-<form name="$ctrl.editForm" ng-if="$ctrl.showForm" ng-submit="$ctrl.editListing($ctrl.listing)">
+<form name="$ctrl.createForm" ng-if="$ctrl.showCreateForm" ng-submit="$ctrl.add($ctrl.listing); $event.stopPropagation();">
+  <input ng-model="$ctrl.listing.title" type="text" name="title" placeholder="Title"><br><br>
+  <textarea ng-model="$ctrl.listing.description" name="description" placeholder="Description"></textarea><br><br>
+  <input ng-model="$ctrl.listing.price" type="number" name="price" placeholder="Price"><br><br>
+  <input ng-model="$ctrl.listing.item_image" type="text" name="itemImage" placeholder="Image URL"><br>
+  <button type="submit" name="button">Create</button>
+</form>
+
+<form name="$ctrl.editForm" ng-if="$ctrl.showEditForm" ng-submit="$ctrl.editListing($ctrl.listing); $event.stopPropagation();">
   <input ng-model="$ctrl.listing.title" type="text" name="title" placeholder="Title"><br><br>
   <textarea ng-model="$ctrl.listing.description" name="description" placeholder="Description"></textarea><br><br>
   <input ng-model="$ctrl.listing.price" type="number" name="price" placeholder="Price"><br><br>
