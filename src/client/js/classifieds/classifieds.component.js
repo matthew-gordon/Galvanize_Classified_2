@@ -26,8 +26,7 @@
           {value: 'title', label: 'TITLE'},
           {value: 'price', label: 'PRICE'}
         ];
-        vm.sortByValue = vm.options[0].value
-        console.log(vm.selectedOption);
+        vm.sortByValue = vm.options[0].value;
       };
 
       vm.createFormToggle = () => {
