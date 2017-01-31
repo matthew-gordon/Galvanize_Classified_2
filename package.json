@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha",
-    "heroku-postbuild": "heroku run knex migrate:latest && heroku run knex seed:run"
+    "heroku-postbuild": "run knex migrate:latest && run knex seed:run"
   },
   "keywords": [],
   "author": "",
