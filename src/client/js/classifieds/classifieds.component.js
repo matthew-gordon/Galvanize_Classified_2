@@ -11,8 +11,23 @@
       let vm = this;
 
       vm.$onInit = () => {
+        $http.get('/classifieds')
+        .then((res, err) => {
+          if (err) {
+            console.error(err);
+          }
+          vm.listings = res.data;
+        });
+
         vm.showEditForm = false;
         vm.showCreateForm = false;
+        vm.options = [
+          {value: 'id', label: 'ID'},
+          {value: 'title', label: 'TITLE'},
+          {value: 'price', label: 'PRICE'}
+        ];
+        vm.sortByValue = vm.options[0].value
+        console.log(vm.selectedOption);
       };
 
       vm.createFormToggle = () => {

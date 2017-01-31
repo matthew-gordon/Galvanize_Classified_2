@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha"
+    "test": "mocha",
+    "heroku-prebuild": "heroku run knex migrate: rollback",
+    "heroku-postbuild": "heroku run knex migrate:latest && heroku run knex seed:run"
   },
   "keywords": [],
   "author": "",
