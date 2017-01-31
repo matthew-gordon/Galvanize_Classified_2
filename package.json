@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha",
-    "heroku-prebuild": "heroku run knex migrate: rollback",
-    "heroku-postbuild": "heroku run knex migrate:latest && heroku run knex seed:run"
+    "heroku-prebuild": "run knex migrate: rollback",
+    "heroku-postbuild": "run knex migrate:latest && heroku run knex seed:run"
   },
   "keywords": [],
   "author": "",
